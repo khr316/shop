@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral() // Maven 중앙 저장소
+}
+
+dependencies {
+    // Spring Boot 관련 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 애플리케이션
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // Thymeleaf 템플릿 엔진
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA 데이터베이스 지원
+
+    // Lombok (코드 자동 생성을 위한 라이브러리)
+    implementation 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // MySQL 데이터베이스 연결
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    // 테스트 관련 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot 테스트
+    testImplementation 'org.spockframework:spock-spring:2.0-M5-groovy-3.0' // Spock 테스트 (Groovy 기반, 필요 시)
+}
+
+test {
+    useJUnitPlatform() // JUnit5 사용 설정
+}
