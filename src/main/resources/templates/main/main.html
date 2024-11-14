@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>khrshop</title>
+</head>
+<body>
+<!--    공통 페이지 (로그인 전)-->
+    <div th:if="${email} == null">
+        <a href="/login">로그인</a>
+        <a href="/signup">회원가입</a>
+    </div>
+<!--    공통 페이지 (로그인 후)-->
+    <div th:if="${email} != null">
+        <a href="/logout">로그아웃</a>
+<!--        관리자 버전-->
+        <div th:if="${email} == 'admin@a.com'">
+
+        </div>
+<!--        일반 회원 버전-->
+        <div th:if="${email} != 'admin@a.com'">
+
+        </div>
+    </div>
+
+</body>
+</html>
