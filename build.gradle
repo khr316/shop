@@ -18,6 +18,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // Thymeleaf 템플릿 엔진
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA 데이터베이스 지원
 
+    implementation 'org.springframework.boot:spring-boot-starter-mail'  // 이메일 전송 관련 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' // 소셜 로그인 연동
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    
     // Lombok (코드 자동 생성을 위한 라이브러리)
     implementation 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
