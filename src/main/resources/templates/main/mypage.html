@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>khrshop | 마이페이지</title>
+</head>
+<body>
+이메일(중복X) 이름 비밀번호(조건) 주소 수정
+탈퇴
+주문조회
+리뷰관리
+<hr>
+
+<button type="button" onclick="userinfo()">정보 수정</button>
+
+<div id="userinfo" style="display:none;">
+    <form action="/mypage/userinfo" method="post" id="userinfo-form" onsubmit="return checkPassword()">
+        <input type="hidden" name="id" th:value="${userinfo.id}">
+
+        <input type="text" name="name" id="name" th:value="${userinfo.name}"><br>
+
+        <input id="emailChecked" name="emailChecked" type="hidden" value="false">
+
+        <input type="email" name="email" id="newemail" th:value="${userinfo.email}" th:data-email="${userinfo.email}">
+        <button type="button" onclick="checkEmail()">중복체크</button>
+        <br>
+
+        <input type="password" name="pw" id="pw" th:value="${userinfo.pw}"><br>
+
+        <input type="text" id="address" name="address" th:value="${userinfo.address}" style="width:100%;" readonly>
+        <button onclick="openDaumPostcode()" type="button">주소 수정</button>
+        <br>
+        <input type="text" id="address2" style="display:none;" placeholder="상세주소"><br>
+
+        <button type="submit">수정</button>
+        <button type="button" onclick="xxx()">취소</button>
+    </form>
+</div>
+
+<!-- 다음 주소 검색 API 추가 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function openDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                document.getElementById('address').value = data.address;
+            }
+        }).open();
+
+        var addressDiv = document.getElementById("address2");
+        addressDiv.style.display = "block";
+    }
+</script>
+
+<script src="/js/mypage.js" ></script>
+</body>
+</html>

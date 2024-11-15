@@ -7,6 +7,8 @@
     <title>khrshop | 비밀번호 찾기</title>
 </head>
 <body>
+<a href="/">khrshop</a>
+<h1>khrshop | 비밀번호 찾기</h1>
 <form action="/find/pw" method="post">
     <p>회원가입 시 적은 이메일과 이름을 입력하세요</p>
     <input type="email" name="email" placeholder="이메일" required>
@@ -14,10 +16,14 @@
 
     <button type="submit">비밀번호 찾기</button>
 
+    <p id="okMessage" th:text="${ok}" style="display:none;"></p>
+
     <!-- 에러 메시지 표시 -->
     <div style="color: red;">
         <p th:if="${error}">[[${error}]]</p>
     </div>
 </form>
+
+<script src="/js/find-pw.js" defer></script>
 </body>
 </html>

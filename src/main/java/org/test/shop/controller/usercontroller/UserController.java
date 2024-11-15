@@ -4,8 +4,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -96,8 +94,10 @@ public class UserController {
             // 4. 임시 비밀번호 이메일로 전송
             sendEmail(email, tempPassword);
 
-            // 5. 임시 비밀번호 발급 후 로그인 페이지로 리다이렉션
-            return "redirect:/login";
+            // 5. 임시 비밀번호 발급 후
+            model.addAttribute("ok","임시 비밀번호가 발급되었습니다. 메일을 확인해주세요.");
+
+            return "user/find-pw";
         } else {
             // 6. 사용자가 존재하지 않으면 오류 메시지 추가
             model.addAttribute("error", "이메일 또는 이름을 확인해주세요");
